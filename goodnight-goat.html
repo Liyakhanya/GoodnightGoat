@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goodnight</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+
+    background:
+        radial-gradient(circle at 50% 15%, #55427d 0%, transparent 28%),
+        radial-gradient(circle at 15% 85%, #34234f 0%, transparent 30%),
+        linear-gradient(145deg, #090711, #171125 50%, #090711);
+
+    color: #ffffff;
+    overflow-x: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    min-height: 100vh;
+}
+
+
+/* ---------------- STAR FIELD ---------------- */
+
+.stars,
+.stars::before,
+.stars::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+
+    background-image:
+        radial-gradient(circle, rgba(220,200,255,.9) 1px, transparent 1px),
+        radial-gradient(circle, rgba(190,165,255,.7) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,.4) 1px, transparent 1px);
+
+    background-size:
+        130px 130px,
+        190px 190px,
+        270px 270px;
+
+    background-position:
+        20px 30px,
+        70px 100px,
+        150px 40px;
+
+    opacity: .38;
+    pointer-events: none;
+}
+
+.stars::before {
+    animation: drift 35s linear infinite;
+}
+
+.stars::after {
+    animation: drift 55s linear infinite reverse;
+    opacity: .22;
+}
+
+@keyframes drift {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-130px);
+    }
+}
+.heart-symbol {
+    color: #d9bfff;
+    font-size: 20px;
+    margin-left: 5px;
+    text-shadow: 0 0 12px rgba(210,175,255,.6);
+}
+
+.suspicious {
+    display: inline-block;
+    margin-left: 5px;
+    color: #d8c5f5;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+/* ---------------- MOON ---------------- */
+
+.moon {
+    position: absolute;
+
+    top: 8%;
+    right: 12%;
+
+    width: 72px;
+    height: 72px;
+
+    border-radius: 50%;
+
+    background: #f5edff;
+
+    box-shadow:
+        0 0 25px rgba(221,196,255,.45),
+        0 0 70px rgba(176,126,255,.25),
+        0 0 120px rgba(147,92,255,.12);
+
+    opacity: .95;
+}
+
+.moon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 72px;
+    height: 72px;
+
+    border-radius: 50%;
+
+    background: #171125;
+
+    top: -10px;
+    left: 17px;
+}
+
+
+/* ---------------- CARD ---------------- */
+
+.card {
+    width: min(92%, 510px);
+    min-height: 520px;
+
+    padding: 50px 42px;
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(43,31,67,.82),
+            rgba(23,18,39,.78)
+        );
+
+    border: 1px solid rgba(220,195,255,.16);
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.55),
+        0 0 80px rgba(137,91,211,.12),
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    z-index: 5;
+
+    animation: cardIn .8s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* ---------------- LABEL ---------------- */
+
+.label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 7px 13px;
+
+    border-radius: 100px;
+
+    background: rgba(185,145,255,.09);
+
+    border: 1px solid rgba(207,177,255,.16);
+
+    color: #c9b8e8;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    margin-bottom: 28px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+
+    background: #b99cff;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px #b99cff,
+        0 0 16px rgba(185,156,255,.6);
+}
+
+
+/* ---------------- EMOJI ---------------- */
+
+.emoji {
+    font-size: 65px;
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(0 8px 20px rgba(0,0,0,.35))
+        drop-shadow(0 0 15px rgba(182,145,255,.15));
+
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+
+/* ---------------- TEXT ---------------- */
+
+h1 {
+    font-size: 28px;
+
+    line-height: 1.15;
+
+    margin: 0 0 18px;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 2px 15px rgba(170,130,255,.12);
+}
+
+.name {
+    font-family: 'Playfair Display', serif;
+
+    font-style: italic;
+
+    font-size: 21px;
+
+    color: #e7ddf7;
+
+    margin-bottom: 22px;
+}
+
+p {
+    color: #e0dceb;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    margin: 7px 0;
+}
+
+.highlight {
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+.big {
+    font-size: 18px;
+
+    color: #ffffff;
+
+    font-weight: 600;
+}
+
+
+/* ---------------- BUTTON ---------------- */
+
+button {
+    margin-top: 28px;
+
+    padding: 14px 27px;
+
+    border: 1px solid rgba(255,255,255,.18);
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eee5ff,
+            #d7c2ff
+        );
+
+    color: #241734;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all .25s ease;
+
+    box-shadow:
+        0 8px 25px rgba(142,96,210,.18);
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 12px 35px rgba(164,116,240,.3);
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+
+/* ---------------- PROGRESS ---------------- */
+
+.progress {
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 7px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+
+    border-radius: 5px;
+
+    background: rgba(220,200,255,.12);
+}
+
+.bar.active {
+    background: #c9adff;
+
+    box-shadow:
+        0 0 8px rgba(201,173,255,.45);
+}
+
+
+/* ---------------- FOOTER ---------------- */
+
+.small {
+    margin-top: 25px;
+
+    color: #9990aa;
+
+    font-size: 10px;
+
+    letter-spacing: .5px;
+}
+
+
+/* ---------------- FINAL SCREEN ---------------- */
+
+.final-title {
+    font-size: 30px;
+}
+
+.goat {
+    font-size: 75px;
+
+    filter:
+        drop-shadow(0 0 18px rgba(180,140,255,.25));
+
+    animation: goatFloat 2s ease-in-out infinite;
+}
+
+@keyframes goatFloat {
+    0%,100% {
+        transform:
+            rotate(-3deg)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            rotate(3deg)
+            translateY(-8px);
+    }
+}
+
+.offline {
+    margin-top: 20px;
+
+    padding: 8px 14px;
+
+    border-radius: 100px;
+
+    background: rgba(185,156,255,.08);
+
+    border: 1px solid rgba(185,156,255,.18);
+
+    color: #c9adff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 0 20px rgba(185,156,255,.08);
+}
+
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width: 600px) {
+
+    .card {
+        min-height: 500px;
+        padding: 40px 25px;
+    }
+
+    .moon {
+        right: 5%;
+        top: 5%;
+        transform: scale(.7);
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="moon"></div>
+
+<div class="card" id="card">
+
+    <div class="label">
+        <span class="dot"></span>
+        System Notification
+    </div>
+
+    <div class="emoji">🐐</div>
+
+    <h1>THE GOAT IS<br>GOING OFFLINE</h1>
+
+    <div class="name">
+        Farryn Kitsili
+    </div>
+
+    <p>
+        The GOAT (me) is preparing to enter
+        <b>sleep mode.</b>
+    </p>
+
+    <p>
+        Please remain calm.
+    </p>
+
+    <button onclick="screen2()">
+        Okay 🙄
+    </button>
+
+    <div class="small">
+        System status: dramatically tired
+    </div>
+
+    <div class="progress">
+        <div class="bar active"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+</div>
+
+
+<script>
+
+function animateCard() {
+    const card = document.getElementById("card");
+
+    card.style.animation = "none";
+
+    setTimeout(() => {
+        card.style.animation =
+            "cardIn .55s cubic-bezier(.2,.8,.2,1)";
+    }, 10);
+}
+
+
+/* ---------------- SCREEN 2 ---------------- */
+
+function screen2() {
+
+    document.getElementById("card").innerHTML = `
+
+        <div class="label">
+            <span class="dot"></span>
+            Pre-Sleep Diagnostics
+        </div>
+
+        <div class="emoji">🌙</div>
+
+        <h1>BEFORE I DISAPPEAR...</h1>
+
+        <p>
+            I just wanted to remind you that
+            you're actually pretty cool.
+        </p>
+
+        <p>
+            Don't let it get to your head though.
+            <span class="highlight">Im a crip.</span> 😂
+        </p>
+
+        <button onclick="screen3()">
+            Continue →
+        </button>
+
+        <div class="small">
+            Compliment issued. Ego protection activated.
+        </div>
+
+        <div class="progress">
+            <div class="bar active"></div>
+            <div class="bar active"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    `;
+
+    animateCard();
+}
+
+
+/* ---------------- SCREEN 3 ---------------- */
+
+function screen3() {
+
+    document.getElementById("card").innerHTML = `
+
+        <div class="label">
+            <span class="dot"></span>
+            Final Protocol
+        </div>
+
+        <div class="emoji">🔋</div>
+
+        <h1>GOODNIGHT PROTOCOL</h1>
+
+        <p>
+    Goodnight,
+    <span class="highlight">Farryn Kitsili</span>
+    <span class="heart-symbol">♥</span>
+</p>
+
+        <p>
+            Sleep well.
+        </p>
+
+        <p>
+            Don't miss me <i>too</i> much.
+        </p>
+
+        <p class="big">
+            The GOAT will return once fully recharged.
+            🐐🔋
+        </p>
+
+        <button onclick="finalScreen()">
+            Goodnight
+        </button>
+
+        <div class="small">
+            Estimated recharge time: 8–10 business hours
+        </div>
+
+        <div class="progress">
+            <div class="bar active"></div>
+            <div class="bar active"></div>
+            <div class="bar active"></div>
+            <div class="bar"></div>
+        </div>
+    `;
+
+    animateCard();
+}
+
+
+/* ---------------- FINAL SCREEN ---------------- */
+
+function finalScreen() {
+
+    document.getElementById("card").innerHTML = `
+
+        <div class="label">
+            <span class="dot"></span>
+            Final Transmission
+        </div>
+
+        <div class="goat">🐐</div>
+
+        <h1 class="final-title">
+            GOODNIGHT,<br>
+            FARRYN KITSILI ❤️
+        </h1>
+
+        <p>
+            Now go to sleep dream about
+            <span class="highlight">the goat.</span>
+        </p>
+
+        <p>
+            And yes...
+        </p>
+
+       <p class="big">
+    the making-out research will resume soon.
+    <span class="suspicious">ಠ_ಠ</span>
+</p>
+
+        <p>
+            <i>For scientific purposes, obviously.</i>
+        </p>
+
+        <div class="offline">
+            🐐 GOAT STATUS: OFFLINE
+        </div>
+
+        <div class="small">
+            P.S. I just wanted to make you smile 😂
+        </div>
+
+        <div class="progress">
+            <div class="bar active"></div>
+            <div class="bar active"></div>
+            <div class="bar active"></div>
+            <div class="bar active"></div>
+        </div>
+    `;
+
+    animateCard();
+}
+
+</script>
+
+</body>
+</html>
