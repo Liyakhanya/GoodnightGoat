@@ -13,17 +13,20 @@
 
 html, body {
     margin: 0;
+    padding: 0;
     width: 100%;
+    height: 100%;
     min-height: 100vh;
-}
-
-body {
-    font-family: 'DM Sans', sans-serif;
+    min-height: 100dvh;
 
     background:
         radial-gradient(circle at 50% 15%, #55427d 0%, transparent 28%),
         radial-gradient(circle at 15% 85%, #34234f 0%, transparent 30%),
         linear-gradient(145deg, #090711, #171125 50%, #090711);
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
 
     color: #ffffff;
     overflow-x: hidden;
@@ -33,7 +36,6 @@ body {
     align-items: center;
 
     position: relative;
-    min-height: 100vh;
 }
 
 
